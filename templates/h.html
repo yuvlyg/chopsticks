@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Chopsticks</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <script src="static/logic.js"> 
+    </script>   
+</head>
+<body>
+    <br /><br /><br />
+    <form id="myform">
+    <table align="center">
+        <tr>
+            <td><div id="0" class="hand notselected" onclick="SelectOrUnSelect(this);">{{ v[0] }}</div></td>
+            <td><div id="1" class="hand notselected" onclick="SelectOrUnSelect(this);">{{ v[1] }}</div></td>
+        </tr>
+        <tr>
+        <td></td><td></td>
+        </tr>
+        <tr>
+            <td><div id="2" class="hand notselected" onclick="SelectOrUnSelect(this);">{{ v[2] }}</div></td>
+            <td><div id="3" class="hand notselected" onclick="SelectOrUnSelect(this);">{{ v[3] }}</div></td>
+        </tr>
+    </table>
+    <div align="center">
+    <input type="button" onclick="SelectSplit();" align="center" value="split"><br /><br />
+    <input type="button" onclick="Restart();" align="center" value="restart game">
+    </div>
+    <h1 align="center">{{ big_message }}</h1>
+    <h4 align="center">{{ small_message }}</h4>
+    
+    <input type="hidden" name="v0" value="{{ v[0] }}">
+    <input type="hidden" name="v1" value="{{ v[1] }}">
+    <input type="hidden" name="v2" value="{{ v[2] }}">
+    <input type="hidden" name="v3" value="{{ v[3] }}">
+    <div align="center">
+    <span align="center" style="border: 1px solid; padding: 10px 10px 10px 10px; border-radius: 4px">
+        <input type="radio" name="level" value="0" {{ checked[0] }}/>fool
+        <input type="radio" name="level" value="1" {{ checked[1] }}/>okay
+        <input type="radio" name="level" value="2" {{ checked[2] }}/>pro!
+    </span>
+    </div>
+    </form>
+</body>
+</html>

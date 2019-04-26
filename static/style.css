@@ -1,0 +1,27 @@
+.hand {
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        font-size: 50px;
+        background-color: pink;
+        
+        /* align to center */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px ;
+    }
+.notselected {
+        border: 5px solid grey;
+}
+.selected {
+        border: 5px solid red;
+}
+tr {
+        align: center;
+        width: 100%;
+}
+td {
+        align: center;
+        width: 50%;
+}
