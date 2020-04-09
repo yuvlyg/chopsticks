@@ -1,16 +1,16 @@
 .hand {
         text-align: center;
-        width: 200px;
-        height: 200px;
-        font-size: 50px;
+        width: 150px;
+        height: 150px;
+        font-size: 45px;
         background-color: pink;
-        
+        cursor: pointer;
         /* align to center */
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 20px ;
-    }
+        border-radius: 20px;
+}
 .notselected {
         border: 5px solid grey;
 }
@@ -24,4 +24,5 @@ tr {
 td {
         align: center;
         width: 50%;
+        padding-bottom: 25px;
 }
