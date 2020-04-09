@@ -1,3 +1,4 @@
+from __future__ import print_function
 
 from flask import Flask, request, render_template
 import hit
@@ -5,12 +6,15 @@ import random
 
 hit_game = None
 
+
 def init_game():
     global hit_game
     hit_game = hit.Game()
     hit_game.calculate_labels()
-    
+
+
 app = Flask(__name__)
+
 
 @app.route('/', methods=['GET'])
 def main():
@@ -28,14 +32,14 @@ def main():
             dumb = True
         elif level == 1:
             print("randomizing dumbness")
-            dumb = random.randint(0,10) < 8
+            dumb = random.randint(0, 10) < 9
         else:
             dumb = False
         h2_new, h1_new = hit_game.get_best_move((h1, h2), dumb)
     label = hit_game.get_label((h2_new, h1_new))
-    if label == hit.WIN:
+    if label == hit.Status.WIN:
         message = "I think you can win..."
-    elif label == hit.LOSE:
+    elif label == hit.Status.LOSE:
         message = "I think I will win..."
     else:
         message = ""
@@ -48,11 +52,11 @@ def main():
         print("it was", h2, "change to", h2_new)
     if h1_new[0] == v[1] or h1_new[1] == v[0]:
         h1_new = h1_new[1], h1_new[0]
-    
-    if h2_new == (0,0):
+
+    if h2_new == (0, 0):
         big_message = "You Lost!"
         message = ""
-    elif h1_new == (0,0):
+    elif h1_new == (0, 0):
         big_message = "You Won!"
         message = ""
     else:
@@ -61,12 +65,11 @@ def main():
     checked = ["", "", ""]
     checked[level] = "checked"
     return render_template('h.html', v=[h1_new[0], h1_new[1], h2_new[0], h2_new[1]],
-                                     small_message=message,
-                                     big_message=big_message,
-                                     checked=checked)
-    
+                           small_message=message,
+                           big_message=big_message,
+                           checked=checked)
+
 
 if __name__ == "__main__":
     init_game()
     app.run(debug=True)
-
